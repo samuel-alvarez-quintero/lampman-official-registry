@@ -1,82 +1,177 @@
 {
-    "php": {
-        "8.2.29-win32-vs16-x64": {
-            "Url": "https://windows.php.net/downloads/releases/php-8.2.29-Win32-vs16-x64.zip",
-            "ExtractTo": null,
-            "Checksum": {
-                "SHA256": "3251789a0557eaae3cf25e7b10eccd2fb0480e1cc0ccc2666894c74de45eea76"
-            },
-            "ServiceProcess": {
-                "Name": "{{executableName}}",
-                "Version": "{{version}}",
-                "Start": null,
-                "Stop": null,
-                "Restart": null
+  "official": {
+    "version": "0.1.1",
+    "description": "Official Lampman registry",
+    "services": {
+      "php": {
+        "php-7.4.33-Win32-vc15-x64": {
+          "Url": "https://windows.php.net/downloads/releases/php-7.4.33-Win32-vc15-x64.zip",
+          "ExtractTo": null,
+          "Checksum": null,
+          "Processes": [
+            {
+              "Name": "php.exe",
+              "Version": "7.4.33",
+              "ExePath": ".",
+              "Args": null,
+              "isExtention": false,
+              "ItDependsOn": null,
+              "MustBeDemonizing": false,
+              "AvailableToPathEnvVar": true
             }
+          ],
+          "Profiles": {
+            "default": {
+              "Configuration": null,
+              "Requirements": null
+            },
+            "dev": {
+              "Configuration": null,
+              "Requirements": null
+            },
+            "prod": {
+              "Configuration": null,
+              "Requirements": null
+            }
+          }
         },
-        "8.3.24-win32-vs16-x64": {
-            "Url": "https://windows.php.net/downloads/releases/php-8.3.24-Win32-vs16-x64.zip",
-            "ExtractTo": null,
-            "Checksum": {
-                "SHA256": "922882c73ffa5d08192769b8030477ba63fca3e35bf78e9c8f22aef19cbe66e3"
-            },
-            "ServiceProcess": {
-                "Name": "{{executableName}}",
-                "Version": "{{version}}",
-                "Start": null,
-                "Stop": null,
-                "Restart": null
+        "php-8.3.26-Win32-vs16-x64": {
+          "Url": "https://windows.php.net/downloads/releases/php-8.3.26-Win32-vs16-x64.zip",
+          "ExtractTo": null,
+          "Checksum": {
+            "SHA256": "5989dcdb891ca90014e8bd33ad2e162b2b58627fe15377ea5aaa57ed1c5b8464"
+          },
+          "Processes": [
+            {
+              "Name": "php.exe",
+              "Version": "8.3.26",
+              "ExePath": ".",
+              "Args": null,
+              "isExtention": false,
+              "ItDependsOn": null,
+              "MustBeDemonizing": false,
+              "AvailableToPathEnvVar": true
             }
+          ],
+          "Profiles": {
+            "default": {
+              "Configuration": null,
+              "Requirements": null
+            },
+            "dev": {
+              "Configuration": null,
+              "Requirements": null
+            },
+            "prod": {
+              "Configuration": null,
+              "Requirements": null
+            }
+          }
         },
-        "8.4.11-win32-vs17-x64": {
-            "Url": "https://windows.php.net/downloads/releases/php-8.4.11-Win32-vs17-x64.zip",
-            "ExtractTo": null,
-            "Checksum": {
-                "SHA256": "1d037fb48dd44c2e434954a0408cc8e0078558bec37dcd98bf85e334e28d57bc"
-            },
-            "ServiceProcess": {
-                "Name": "{{executableName}}",
-                "Version": "{{version}}",
-                "Start": null,
-                "Stop": null,
-                "Restart": null
+        "php-8.4.13-Win32-vs17-x64": {
+          "Url": "https://windows.php.net/downloads/releases/php-8.4.13-Win32-vs17-x64.zip",
+          "ExtractTo": null,
+          "Checksum": {
+            "SHA256": "e147b7895a210890072620ab4c15c8bc422910a03ddcf976d0dd863d66db5904"
+          },
+          "Processes": [
+            {
+              "Name": "php.exe",
+              "Version": "8.4.13",
+              "ExePath": ".",
+              "Args": null,
+              "isExtention": false,
+              "ItDependsOn": null,
+              "MustBeDemonizing": false,
+              "AvailableToPathEnvVar": true
             }
-        }
-    },
-    "httpd": {
-        "2.4.65-250724-win64-vs17": {
-            "Url": "https://www.apachelounge.com/download/VS17/binaries/httpd-2.4.65-250724-Win64-VS17.zip",
-            "ExtractTo": null,
-            "Checksum": {
-                "SHA224": "337D100B6D05F26E0BC725D099D2941E55F6FCDC63F592BE5940BF18",
-                "SHA256": "E324797985825424AF00CDB9D78B029723F18862DF6C02C2219B341E33E31F04",
-                "SHA384": "89D797FD5E8EE0F51257AA8A2B5B1563933408A626C951EB227AB8FFFC8B8F706AC05B41C1C68AB71CC96E787D7E682C",
-                "SHA512": "A644237404A63308823553DF969437BEA140794CE57DEC04ACE98DE3322FD3A21C9E173907039AB5D68F2D58AAB775E18DDBE7F1A473EA5444A04A869A9A5C91"
+          ],
+          "Profiles": {
+            "default": {
+              "Configuration": null,
+              "Requirements": null
             },
-            "ServiceProcess": {
-                "Name": "{{executableName}}",
-                "Version": "{{version}}",
-                "Start": "{{executableLocalPath}}",
-                "Restart": null,
-                "Stop": null
-            }
-        }
-    },
-    "mariadb": {
-        "11.8.3-winx64": {
-            "Url": "https://archive.mariadb.org/mariadb-11.8.3/winx64-packages/mariadb-11.8.3-winx64.zip.asc",
-            "ExtractTo": null,
-            "Checksum": {
-                "SHA256": "debd9643db9b3d35276fb782789564484c681b1bb264d03de0b3a2e8e739f493",
-                "SHA512": "3346ce7b5c8f1e8510b8c86adc3d1e7a6145d884dddd80430eda2c86a541ce7d625bdf8b8d6b1d96aea7f0c0372c69312625f1cfd87fc0409e50777413bb5685"
+            "dev": {
+              "Configuration": null,
+              "Requirements": null
             },
-            "ServiceProcess": {
-                "Name": "{{executableName}}",
-                "Version": "{{version}}",
-                "Start": "{{executableLocalPath}}",
-                "Restart": null,
-                "Stop": null
+            "prod": {
+              "Configuration": null,
+              "Requirements": null
             }
+          }
         }
+      },
+      "httpd": {
+        "httpd-2.4.65-250724-Win64-VS17": {
+          "Url": "https://www.apachelounge.com/download/VS17/binaries/httpd-2.4.65-250724-Win64-VS17.zip",
+          "ExtractTo": null,
+          "Checksum": {
+            "SHA256": "E324797985825424AF00CDB9D78B029723F18862DF6C02C2219B341E33E31F04"
+          },
+          "Processes": [
+            {
+              "Name": "httpd.exe",
+              "Version": "2.4.65",
+              "ExePath": ".",
+              "Args": null,
+              "isExtention": false,
+              "ItDependsOn": null,
+              "MustBeDemonizing": true,
+              "AvailableToPathEnvVar": true
+            }
+          ],
+          "Profiles": {
+            "default": {
+              "Configuration": null,
+              "Requirements": null
+            },
+            "dev": {
+              "Configuration": null,
+              "Requirements": null
+            },
+            "prod": {
+              "Configuration": null,
+              "Requirements": null
+            }
+          }
+        }
+      },
+      "mariadb": {
+        "mariadb-11.8.3-winx64": {
+          "Url": "https://espejito.fder.edu.uy/mariadb//mariadb-11.8.3/winx64-packages/mariadb-11.8.3-winx64.zip",
+          "ExtractTo": null,
+          "Checksum": {
+            "SHA256": "debd9643db9b3d35276fb782789564484c681b1bb264d03de0b3a2e8e739f493"
+          },
+          "Processes": [
+            {
+              "Name": "mysql.exe",
+              "Version": "11.8.3",
+              "ExePath": ".",
+              "Args": null,
+              "isExtention": false,
+              "ItDependsOn": null,
+              "MustBeDemonizing": true,
+              "AvailableToPathEnvVar": true
+            }
+          ],
+          "Profiles": {
+            "default": {
+              "Configuration": null,
+              "Requirements": null
+            },
+            "dev": {
+              "Configuration": null,
+              "Requirements": null
+            },
+            "prod": {
+              "Configuration": null,
+              "Requirements": null
+            }
+          }
+        }
+      }
     }
+  }
 }
