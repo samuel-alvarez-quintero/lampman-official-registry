@@ -1,7 +1,7 @@
 {
-  "version": "0.1.1",
-  "description": "Official Lampman registry",
-  "services": {
+  "Version": "0.1.1",
+  "Description": "Official Lampman registry",
+  "Services": {
     "php": {
       "php-7.4.33-Win32-vc15-x64": {
         "Url": "https://windows.php.net/downloads/releases/php-7.4.33-Win32-vc15-x64.zip",
