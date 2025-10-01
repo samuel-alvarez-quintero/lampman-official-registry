@@ -1,6 +1,7 @@
 {
   "Version": "0.1.1",
   "Description": "Official Lampman registry",
+  "LastRequest": null,
   "Services": {
     "php": {
       "php-7.4.33-Win32-vc15-x64": {
