@@ -1,0 +1,42 @@
+{
+  "Version": "0.1.1",
+  "Description": "Official MariaDB Lampman Registry",
+  "LastRequest": null,
+  "Services": {
+    "mariadb": {
+      "mariadb-11.8.3-winx64": {
+        "Url": "https://espejito.fder.edu.uy/mariadb//mariadb-11.8.3/winx64-packages/mariadb-11.8.3-winx64.zip",
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": "debd9643db9b3d35276fb782789564484c681b1bb264d03de0b3a2e8e739f493"
+        },
+        "Processes": [
+          {
+            "Name": "mysql.exe",
+            "Version": "11.8.3",
+            "ExePath": ".",
+            "Args": null,
+            "isExtention": false,
+            "ItDependsOn": null,
+            "MustBeDemonizing": true,
+            "AvailableToPathEnvVar": true
+          }
+        ],
+        "Profiles": {
+          "default": {
+            "Configuration": null,
+            "Requirements": null
+          },
+          "dev": {
+            "Configuration": null,
+            "Requirements": null
+          },
+          "prod": {
+            "Configuration": null,
+            "Requirements": null
+          }
+        }
+      }
+    }
+  }
+}

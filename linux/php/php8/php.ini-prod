@@ -1,0 +1,38 @@
+[PHP]
+display_errors = Off
+display_startup_errors = Off
+error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT
+log_errors = On
+error_log = "/var/log/lampman/php8-error.log"
+memory_limit = 512M
+upload_max_filesize = 64M
+post_max_size = 64M
+max_execution_time = 60
+date.timezone = UTC
+serialize_precision = -1
+
+[Session]
+session.save_handler = files
+session.save_path = "/var/lib/php/sessions"
+session.gc_maxlifetime = 3600
+session.sid_length = 48
+session.sid_bits_per_character = 6
+
+[Extensions]
+extension_dir = "/usr/lib/php/extensions"
+extension=mysqli
+extension=pdo_mysql
+extension=openssl
+extension=curl
+zend_extension=opcache
+
+[Opcache]
+opcache.enable=1
+opcache.jit=tracing
+opcache.jit_buffer_size=256M
+opcache.memory_consumption=256
+opcache.interned_strings_buffer=16
+opcache.max_accelerated_files=20000
+opcache.validate_timestamps=0
+opcache.revalidate_freq=60
+opcache.fast_shutdown=1

@@ -1,0 +1,44 @@
+[PHP]
+display_errors = On
+display_startup_errors = On
+error_reporting = E_ALL
+log_errors = On
+error_log = "${LAMPMAN_ENV_PATH}/logs/php8-error.log"
+memory_limit = 512M
+upload_max_filesize = 128M
+post_max_size = 128M
+max_execution_time = 120
+date.timezone = UTC
+serialize_precision = -1
+
+[Session]
+session.save_handler = files
+session.save_path = "${LAMPMAN_ENV_PATH}/sessions"
+session.gc_maxlifetime = 3600
+session.sid_length = 48
+session.sid_bits_per_character = 6
+
+[Extensions]
+extension_dir = "${LAMPMAN_ENV_PATH}/php/ext"
+extension=mysqli
+extension=pdo_mysql
+extension=openssl
+extension=curl
+zend_extension=opcache
+zend_extension=xdebug
+
+[Opcache]
+opcache.enable=0
+opcache.jit=tracing
+opcache.jit_buffer_size=100M
+opcache.memory_consumption=128
+opcache.interned_strings_buffer=8
+opcache.max_accelerated_files=8000
+opcache.revalidate_freq=2
+opcache.fast_shutdown=1
+
+[Xdebug]
+xdebug.mode = debug,develop
+xdebug.start_with_request = yes
+xdebug.client_port = 9003
+xdebug.client_host = host.docker.internal
