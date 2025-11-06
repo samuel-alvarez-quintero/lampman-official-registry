@@ -7,44 +7,13 @@
       "php-7.4.33-Win32-vc15-x64": {
         "Url": "https://windows.php.net/downloads/releases/php-7.4.33-Win32-vc15-x64.zip",
         "ExtractTo": null,
-        "Checksum": null,
-        "Processes": [
-          {
-            "Name": "php.exe",
-            "Version": "7.4.33",
-            "ExePath": ".",
-            "Args": null,
-            "isExtention": false,
-            "ItDependsOn": null,
-            "MustBeDemonizing": false,
-            "AvailableToPathEnvVar": true
-          }
-        ],
-        "Profiles": {
-          "default": {
-            "Configuration": null,
-            "Requirements": null
-          },
-          "dev": {
-            "Configuration": null,
-            "Requirements": null
-          },
-          "prod": {
-            "Configuration": null,
-            "Requirements": null
-          }
-        }
-      },
-      "php-8.3.26-Win32-vs16-x64": {
-        "Url": "https://windows.php.net/downloads/releases/php-8.3.26-Win32-vs16-x64.zip",
-        "ExtractTo": null,
         "Checksum": {
-          "SHA256": "5989dcdb891ca90014e8bd33ad2e162b2b58627fe15377ea5aaa57ed1c5b8464"
+          "SHA256": null
         },
         "Processes": [
           {
             "Name": "php.exe",
-            "Version": "8.3.26",
+            "Version": null,
             "ExePath": ".",
             "Args": null,
             "isExtention": false,
@@ -54,10 +23,6 @@
           }
         ],
         "Profiles": {
-          "default": {
-            "Configuration": null,
-            "Requirements": null
-          },
           "dev": {
             "Configuration": null,
             "Requirements": null
@@ -68,41 +33,8 @@
           }
         }
       },
-      "php-8.4.13-Win32-vs17-x64": {
-        "Url": "https://windows.php.net/downloads/releases/php-8.4.13-Win32-vs17-x64.zip",
-        "ExtractTo": null,
-        "Checksum": {
-          "SHA256": "e147b7895a210890072620ab4c15c8bc422910a03ddcf976d0dd863d66db5904"
-        },
-        "Processes": [
-          {
-            "Name": "php.exe",
-            "Version": "8.4.13",
-            "ExePath": ".",
-            "Args": null,
-            "isExtention": false,
-            "ItDependsOn": null,
-            "MustBeDemonizing": false,
-            "AvailableToPathEnvVar": true
-          }
-        ],
-        "Profiles": {
-          "default": {
-            "Configuration": null,
-            "Requirements": null
-          },
-          "dev": {
-            "Configuration": null,
-            "Requirements": null
-          },
-          "prod": {
-            "Configuration": null,
-            "Requirements": null
-          }
-        }
-      },
-      "7.4.33-ts-vs17-x64": {
-        "Url": "https://windows.php.net/downloads/releases/",
+      "php-7.4.33-Win32-vc15-x86": {
+        "Url": "https://windows.php.net/downloads/releases/php-7.4.33-Win32-vc15-x86.zip",
         "ExtractTo": null,
         "Checksum": {
           "SHA256": null
@@ -110,7 +42,7 @@
         "Processes": [
           {
             "Name": "php.exe",
-            "Version": "7.4.33",
+            "Version": null,
             "ExePath": ".",
             "Args": null,
             "isExtention": false,
@@ -130,8 +62,8 @@
           }
         }
       },
-      "7.4.33-nts-vs17-x64": {
-        "Url": "https://windows.php.net/downloads/releases/",
+      "php-7.4.33-nts-Win32-vc15-x64": {
+        "Url": "https://windows.php.net/downloads/releases/php-7.4.33-nts-Win32-vc15-x64.zip",
         "ExtractTo": null,
         "Checksum": {
           "SHA256": null
@@ -139,7 +71,7 @@
         "Processes": [
           {
             "Name": "php.exe",
-            "Version": "7.4.33",
+            "Version": null,
             "ExePath": ".",
             "Args": null,
             "isExtention": false,
@@ -159,8 +91,8 @@
           }
         }
       },
-      "8.0.30-ts-vs17-x64": {
-        "Url": "https://windows.php.net/downloads/releases/",
+      "php-7.4.33-nts-Win32-vc15-x86": {
+        "Url": "https://windows.php.net/downloads/releases/php-7.4.33-nts-Win32-vc15-x86.zip",
         "ExtractTo": null,
         "Checksum": {
           "SHA256": null
@@ -168,7 +100,7 @@
         "Processes": [
           {
             "Name": "php.exe",
-            "Version": "8.0.30",
+            "Version": null,
             "ExePath": ".",
             "Args": null,
             "isExtention": false,
@@ -188,8 +120,8 @@
           }
         }
       },
-      "8.0.30-nts-vs17-x64": {
-        "Url": "https://windows.php.net/downloads/releases/",
+      "php-8.0.30-Win32-vs16-x64": {
+        "Url": "https://windows.php.net/downloads/releases/php-8.0.30-Win32-vs16-x64.zip",
         "ExtractTo": null,
         "Checksum": {
           "SHA256": null
@@ -197,7 +129,7 @@
         "Processes": [
           {
             "Name": "php.exe",
-            "Version": "8.0.30",
+            "Version": null,
             "ExePath": ".",
             "Args": null,
             "isExtention": false,
@@ -217,8 +149,8 @@
           }
         }
       },
-      "8.1.33-ts-vs17-x64": {
-        "Url": "https://windows.php.net/downloads/releases/",
+      "php-8.0.30-Win32-vs16-x86": {
+        "Url": "https://windows.php.net/downloads/releases/php-8.0.30-Win32-vs16-x86.zip",
         "ExtractTo": null,
         "Checksum": {
           "SHA256": null
@@ -226,7 +158,7 @@
         "Processes": [
           {
             "Name": "php.exe",
-            "Version": "8.1.33",
+            "Version": null,
             "ExePath": ".",
             "Args": null,
             "isExtention": false,
@@ -246,8 +178,8 @@
           }
         }
       },
-      "8.1.33-nts-vs17-x64": {
-        "Url": "https://windows.php.net/downloads/releases/",
+      "php-8.0.30-nts-Win32-vs16-x64": {
+        "Url": "https://windows.php.net/downloads/releases/php-8.0.30-nts-Win32-vs16-x64.zip",
         "ExtractTo": null,
         "Checksum": {
           "SHA256": null
@@ -255,7 +187,7 @@
         "Processes": [
           {
             "Name": "php.exe",
-            "Version": "8.1.33",
+            "Version": null,
             "ExePath": ".",
             "Args": null,
             "isExtention": false,
@@ -275,8 +207,8 @@
           }
         }
       },
-      "8.2.29-ts-vs17-x64": {
-        "Url": "https://windows.php.net/downloads/releases/",
+      "php-8.0.30-nts-Win32-vs16-x86": {
+        "Url": "https://windows.php.net/downloads/releases/php-8.0.30-nts-Win32-vs16-x86.zip",
         "ExtractTo": null,
         "Checksum": {
           "SHA256": null
@@ -284,7 +216,7 @@
         "Processes": [
           {
             "Name": "php.exe",
-            "Version": "8.2.29",
+            "Version": null,
             "ExePath": ".",
             "Args": null,
             "isExtention": false,
@@ -304,16 +236,16 @@
           }
         }
       },
-      "8.2.29-nts-vs17-x64": {
-        "Url": "https://windows.php.net/downloads/releases/",
+      "php-8.1.33-Win32-vs16-x64": {
+        "Url": "https://windows.php.net/downloads/releases/php-8.1.33-Win32-vs16-x64.zip",
         "ExtractTo": null,
         "Checksum": {
-          "SHA256": null
+          "SHA256": "3888d81bf6f6a06ff2b9df5114b2ca40075d2631dc3e23584b503c40d44d8ed0"
         },
         "Processes": [
           {
             "Name": "php.exe",
-            "Version": "8.2.29",
+            "Version": null,
             "ExePath": ".",
             "Args": null,
             "isExtention": false,
@@ -333,16 +265,16 @@
           }
         }
       },
-      "8.3.27-ts-vs17-x64": {
-        "Url": "https://windows.php.net/downloads/releases/",
+      "php-8.1.33-Win32-vs16-x86": {
+        "Url": "https://windows.php.net/downloads/releases/php-8.1.33-Win32-vs16-x86.zip",
         "ExtractTo": null,
         "Checksum": {
-          "SHA256": null
+          "SHA256": "142c9515ede8d4015758eaf00e9b3f16f578aff0f9bcdb3459c537ea1b5d47eb"
         },
         "Processes": [
           {
             "Name": "php.exe",
-            "Version": "8.3.27",
+            "Version": null,
             "ExePath": ".",
             "Args": null,
             "isExtention": false,
@@ -362,16 +294,16 @@
           }
         }
       },
-      "8.3.27-nts-vs17-x64": {
-        "Url": "https://windows.php.net/downloads/releases/",
+      "php-8.1.33-nts-Win32-vs16-x64": {
+        "Url": "https://windows.php.net/downloads/releases/php-8.1.33-nts-Win32-vs16-x64.zip",
         "ExtractTo": null,
         "Checksum": {
-          "SHA256": null
+          "SHA256": "c34703ced40248d68bef4167015d5f2cce35c43850304beb070556f9705fb746"
         },
         "Processes": [
           {
             "Name": "php.exe",
-            "Version": "8.3.27",
+            "Version": null,
             "ExePath": ".",
             "Args": null,
             "isExtention": false,
@@ -391,7 +323,268 @@
           }
         }
       },
-      "8.4.14-ts-vs17-x64": {
+      "php-8.1.33-nts-Win32-vs16-x86": {
+        "Url": "https://windows.php.net/downloads/releases/php-8.1.33-nts-Win32-vs16-x86.zip",
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": "d05705d8db10b293c4e92630a327f108555e880d0ba2fbf7d1796b0e144b1ca5"
+        },
+        "Processes": [
+          {
+            "Name": "php.exe",
+            "Version": null,
+            "ExePath": ".",
+            "Args": null,
+            "isExtention": false,
+            "ItDependsOn": null,
+            "MustBeDemonizing": false,
+            "AvailableToPathEnvVar": true
+          }
+        ],
+        "Profiles": {
+          "dev": {
+            "Configuration": null,
+            "Requirements": null
+          },
+          "prod": {
+            "Configuration": null,
+            "Requirements": null
+          }
+        }
+      },
+      "php-8.2.29-Win32-vs16-x64": {
+        "Url": "https://windows.php.net/downloads/releases/php-8.2.29-Win32-vs16-x64.zip",
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": "3251789a0557eaae3cf25e7b10eccd2fb0480e1cc0ccc2666894c74de45eea76"
+        },
+        "Processes": [
+          {
+            "Name": "php.exe",
+            "Version": null,
+            "ExePath": ".",
+            "Args": null,
+            "isExtention": false,
+            "ItDependsOn": null,
+            "MustBeDemonizing": false,
+            "AvailableToPathEnvVar": true
+          }
+        ],
+        "Profiles": {
+          "dev": {
+            "Configuration": null,
+            "Requirements": null
+          },
+          "prod": {
+            "Configuration": null,
+            "Requirements": null
+          }
+        }
+      },
+      "php-8.2.29-Win32-vs16-x86": {
+        "Url": "https://windows.php.net/downloads/releases/php-8.2.29-Win32-vs16-x86.zip",
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": "334244d028ef1b2634a5689d3a57add301afefe70ec7391b80452f8542d7a886"
+        },
+        "Processes": [
+          {
+            "Name": "php.exe",
+            "Version": null,
+            "ExePath": ".",
+            "Args": null,
+            "isExtention": false,
+            "ItDependsOn": null,
+            "MustBeDemonizing": false,
+            "AvailableToPathEnvVar": true
+          }
+        ],
+        "Profiles": {
+          "dev": {
+            "Configuration": null,
+            "Requirements": null
+          },
+          "prod": {
+            "Configuration": null,
+            "Requirements": null
+          }
+        }
+      },
+      "php-8.2.29-nts-Win32-vs16-x64": {
+        "Url": "https://windows.php.net/downloads/releases/php-8.2.29-nts-Win32-vs16-x64.zip",
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": "8404a12bd421075060ae9f7ae988777a476807163d9d4c10e1ac55175976f5c0"
+        },
+        "Processes": [
+          {
+            "Name": "php.exe",
+            "Version": null,
+            "ExePath": ".",
+            "Args": null,
+            "isExtention": false,
+            "ItDependsOn": null,
+            "MustBeDemonizing": false,
+            "AvailableToPathEnvVar": true
+          }
+        ],
+        "Profiles": {
+          "dev": {
+            "Configuration": null,
+            "Requirements": null
+          },
+          "prod": {
+            "Configuration": null,
+            "Requirements": null
+          }
+        }
+      },
+      "php-8.2.29-nts-Win32-vs16-x86": {
+        "Url": "https://windows.php.net/downloads/releases/php-8.2.29-nts-Win32-vs16-x86.zip",
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": "bf88cf1e7303639db234766e9eeae19d6f0760da127d4ccfd88d4a1a412a8f69"
+        },
+        "Processes": [
+          {
+            "Name": "php.exe",
+            "Version": null,
+            "ExePath": ".",
+            "Args": null,
+            "isExtention": false,
+            "ItDependsOn": null,
+            "MustBeDemonizing": false,
+            "AvailableToPathEnvVar": true
+          }
+        ],
+        "Profiles": {
+          "dev": {
+            "Configuration": null,
+            "Requirements": null
+          },
+          "prod": {
+            "Configuration": null,
+            "Requirements": null
+          }
+        }
+      },
+      "php-8.3.27-Win32-vs16-x64": {
+        "Url": "https://windows.php.net/downloads/releases/php-8.3.27-Win32-vs16-x64.zip",
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": "d1fc886c8f1b6732aa60361da8c935b069f98e71b5527742edf0e66caa86cca7"
+        },
+        "Processes": [
+          {
+            "Name": "php.exe",
+            "Version": null,
+            "ExePath": ".",
+            "Args": null,
+            "isExtention": false,
+            "ItDependsOn": null,
+            "MustBeDemonizing": false,
+            "AvailableToPathEnvVar": true
+          }
+        ],
+        "Profiles": {
+          "dev": {
+            "Configuration": null,
+            "Requirements": null
+          },
+          "prod": {
+            "Configuration": null,
+            "Requirements": null
+          }
+        }
+      },
+      "php-8.3.27-Win32-vs16-x86": {
+        "Url": "https://windows.php.net/downloads/releases/php-8.3.27-Win32-vs16-x86.zip",
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": "c2c65b6196ebdb278daeb30adde5107186874b6533b7cd99715a0fcfac91d7e3"
+        },
+        "Processes": [
+          {
+            "Name": "php.exe",
+            "Version": null,
+            "ExePath": ".",
+            "Args": null,
+            "isExtention": false,
+            "ItDependsOn": null,
+            "MustBeDemonizing": false,
+            "AvailableToPathEnvVar": true
+          }
+        ],
+        "Profiles": {
+          "dev": {
+            "Configuration": null,
+            "Requirements": null
+          },
+          "prod": {
+            "Configuration": null,
+            "Requirements": null
+          }
+        }
+      },
+      "php-8.3.27-nts-Win32-vs16-x64": {
+        "Url": "https://windows.php.net/downloads/releases/php-8.3.27-nts-Win32-vs16-x64.zip",
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": "30e52d475c89aac93a6a1931f92966e0cfd65f3badc4c83592920a917791f014"
+        },
+        "Processes": [
+          {
+            "Name": "php.exe",
+            "Version": null,
+            "ExePath": ".",
+            "Args": null,
+            "isExtention": false,
+            "ItDependsOn": null,
+            "MustBeDemonizing": false,
+            "AvailableToPathEnvVar": true
+          }
+        ],
+        "Profiles": {
+          "dev": {
+            "Configuration": null,
+            "Requirements": null
+          },
+          "prod": {
+            "Configuration": null,
+            "Requirements": null
+          }
+        }
+      },
+      "php-8.3.27-nts-Win32-vs16-x86": {
+        "Url": "https://windows.php.net/downloads/releases/php-8.3.27-nts-Win32-vs16-x86.zip",
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": "bd3e899abd280588c37624272206c6e14b159c44a3724e91e9b11cad88d0db93"
+        },
+        "Processes": [
+          {
+            "Name": "php.exe",
+            "Version": null,
+            "ExePath": ".",
+            "Args": null,
+            "isExtention": false,
+            "ItDependsOn": null,
+            "MustBeDemonizing": false,
+            "AvailableToPathEnvVar": true
+          }
+        ],
+        "Profiles": {
+          "dev": {
+            "Configuration": null,
+            "Requirements": null
+          },
+          "prod": {
+            "Configuration": null,
+            "Requirements": null
+          }
+        }
+      },
+      "php-8.4.14-Win32-vs17-x64": {
         "Url": "https://windows.php.net/downloads/releases/php-8.4.14-Win32-vs17-x64.zip",
         "ExtractTo": null,
         "Checksum": {
@@ -400,7 +593,7 @@
         "Processes": [
           {
             "Name": "php.exe",
-            "Version": "8.4.14",
+            "Version": null,
             "ExePath": ".",
             "Args": null,
             "isExtention": false,
@@ -420,7 +613,36 @@
           }
         }
       },
-      "8.4.14-nts-vs17-x64": {
+      "php-8.4.14-Win32-vs17-x86": {
+        "Url": "https://windows.php.net/downloads/releases/php-8.4.14-Win32-vs17-x86.zip",
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": "5493862ca86fe69d7bfaa252eecf5c276ec4d0f21e65debc6c62d2fbee6384ca"
+        },
+        "Processes": [
+          {
+            "Name": "php.exe",
+            "Version": null,
+            "ExePath": ".",
+            "Args": null,
+            "isExtention": false,
+            "ItDependsOn": null,
+            "MustBeDemonizing": false,
+            "AvailableToPathEnvVar": true
+          }
+        ],
+        "Profiles": {
+          "dev": {
+            "Configuration": null,
+            "Requirements": null
+          },
+          "prod": {
+            "Configuration": null,
+            "Requirements": null
+          }
+        }
+      },
+      "php-8.4.14-nts-Win32-vs17-x64": {
         "Url": "https://windows.php.net/downloads/releases/php-8.4.14-nts-Win32-vs17-x64.zip",
         "ExtractTo": null,
         "Checksum": {
@@ -429,7 +651,36 @@
         "Processes": [
           {
             "Name": "php.exe",
-            "Version": "8.4.14",
+            "Version": null,
+            "ExePath": ".",
+            "Args": null,
+            "isExtention": false,
+            "ItDependsOn": null,
+            "MustBeDemonizing": false,
+            "AvailableToPathEnvVar": true
+          }
+        ],
+        "Profiles": {
+          "dev": {
+            "Configuration": null,
+            "Requirements": null
+          },
+          "prod": {
+            "Configuration": null,
+            "Requirements": null
+          }
+        }
+      },
+      "php-8.4.14-nts-Win32-vs17-x86": {
+        "Url": "https://windows.php.net/downloads/releases/php-8.4.14-nts-Win32-vs17-x86.zip",
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": "de0d8e0a396bbec998fdeeb03bb49f853ce91647257baaa6373c863bb1feeeb8"
+        },
+        "Processes": [
+          {
+            "Name": "php.exe",
+            "Version": null,
             "ExePath": ".",
             "Args": null,
             "isExtention": false,

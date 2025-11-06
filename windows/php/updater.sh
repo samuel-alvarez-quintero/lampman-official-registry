@@ -23,7 +23,7 @@ jq -n \
   --arg desc "Official PHP Lampman Registry for Windows" \
   --arg base "$BASE_URL" \
   --argjson data "$(jq '.' "$TMP_JSON")" '
- {
+{
   "Version": "latest",
   "Description": $desc,
   "LastRequest": null,
@@ -33,66 +33,34 @@ jq -n \
       | to_entries
       | map(
           .value
-          | {
-              (.version + "-ts-vs17-x64"): (
-                {
-                  "Url": ($base + "/" + .["ts-vs17-x64"].zip.path),
-                  "ExtractTo": null,
-                  "Checksum": { "SHA256": .["ts-vs17-x64"].zip.sha256 },
-                  "Processes": [
-                    {
-                      "Name": "php.exe",
-                      "Version": .version,
-                      "ExePath": ".",
-                      "Args": null,
-                      "isExtention": false,
-                      "ItDependsOn": null,
-                      "MustBeDemonizing": false,
-                      "AvailableToPathEnvVar": true
-                    }
-                  ],
-                  "Profiles": {
-                    "dev": {
-                      "Configuration": null,
-                      "Requirements": null
-                    },
-                    "prod": {
-                      "Configuration": null,
-                      "Requirements": null
+          | to_entries
+          | map(
+              select(.key | test("^(ts|nts)-(vc15|vs16|vs17)-(x86|x64)$"; "i"))
+              | {
+                  (.value.zip.path[:-4]): {
+                    "Url": ($base + "/" + .value.zip.path),
+                    "ExtractTo": null,
+                    "Checksum": { "SHA256": .value.zip.sha256 },
+                    "Processes": [
+                      {
+                        "Name": "php.exe",
+                        "Version": .value.version,
+                        "ExePath": ".",
+                        "Args": null,
+                        "isExtention": false,
+                        "ItDependsOn": null,
+                        "MustBeDemonizing": false,
+                        "AvailableToPathEnvVar": true
+                      }
+                    ],
+                    "Profiles": {
+                      "dev": {"Configuration": null,"Requirements": null},
+                      "prod": {"Configuration": null,"Requirements": null}
                     }
                   }
                 }
-              ),
-              (.version + "-nts-vs17-x64"): (
-                {
-                  "Url": ($base + "/" + .["nts-vs17-x64"].zip.path),
-                  "ExtractTo": null,
-                  "Checksum": { "SHA256": .["nts-vs17-x64"].zip.sha256 },
-                  "Processes": [
-                    {
-                      "Name": "php.exe",
-                      "Version": .version,
-                      "ExePath": ".",
-                      "Args": null,
-                      "isExtention": false,
-                      "ItDependsOn": null,
-                      "MustBeDemonizing": false,
-                      "AvailableToPathEnvVar": true
-                    }
-                  ],
-                  "Profiles": {
-                    "dev": {
-                      "Configuration": null,
-                      "Requirements": null
-                    },
-                    "prod": {
-                      "Configuration": null,
-                      "Requirements": null
-                    }
-                  }
-                }
-              )
-            }
+            )
+          | add
         )
       | add
     )
