@@ -9,11 +9,16 @@ jobs:
   update-php-registry:
     runs-on: ubuntu-latest
 
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
+      contents: write
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
+          ref: ${{ github.head_ref }}
 
       - name: Set up environment
         run: sudo apt-get update && sudo apt-get install -y jq curl
