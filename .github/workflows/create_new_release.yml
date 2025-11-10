@@ -1,0 +1,50 @@
+name: Create new Release
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *" # every 24 hours (UTC)
+
+jobs:
+  update-php-registry:
+    runs-on: ubuntu-latest
+
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+
+      - name: Detect new commits since last release
+        id: check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -z "$LATEST_TAG" ]; then
+            NEW_COMMITS=$(git rev-list HEAD --count)
+          else
+            NEW_COMMITS=$(git rev-list "$LATEST_TAG"..HEAD --count)
+          fi
+
+          echo "latest_tag=$LATEST_TAG" >> "$GITHUB_OUTPUT"
+          echo "new_commits=$NEW_COMMITS" >> "$GITHUB_OUTPUT"
+
+      - name: Create release
+        if: steps.check.outputs.new_commits != '0'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          VERSION_TAG="daily-$(date +'%Y%m%d-%H%M%S')"
+          git tag "$VERSION_TAG"
+          git push origin "$VERSION_TAG"
+
+          gh release create "$VERSION_TAG" \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "Daily Lampman Release - $(date +'%Y-%m-%d')" \
+            --notes "Automated release containing commits since ${{ steps.check.outputs.latest_tag }}"

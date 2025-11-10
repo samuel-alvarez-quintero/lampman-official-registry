@@ -3,7 +3,7 @@ name: Update PHP Windows Registry
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 */6 * * *"   # every 6 hours (UTC)
+    - cron: "0 */6 * * *" # every 6 hours (UTC)
 
 jobs:
   update-php-registry:
@@ -25,37 +25,19 @@ jobs:
 
       - name: Run updater script
         run: |
-          chmod +x ./windows/php/updater.sh
-          ./windows/php/updater.sh
+          chmod +x windows/php/updater.sh
+          windows/php/updater.sh
 
-      - name: Check for changes
-        id: git-check
+      - name: Commit registry if changed
+        id: commit
         run: |
-          if git diff --quiet ./windows/php/registry.json; then
+          if git diff --quiet windows/php/registry.json; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add windows/php/registry.json
+            git commit -m "chore(php): update registry"
+            git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
-
-      - name: Commit and push changes
-        if: steps.git-check.outputs.changed == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add ./windows/php/registry.json
-          git commit -m "chore: update PHP Windows registry"
-          git push origin HEAD:main
-
-      - name: Create tag and release
-        if: steps.git-check.outputs.changed == 'true'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          VERSION_TAG="php-registry-$(date +'%Y%m%d-%H%M%S')"
-          git tag "$VERSION_TAG"
-          git push origin "$VERSION_TAG"
-
-          gh release create "$VERSION_TAG" \
-            --repo "$GITHUB_REPOSITORY" \
-            --title "PHP Windows Registry Update - $(date +'%Y-%m-%d %H:%M:%S')" \
-            --notes "Automated registry update triggered by workflow run."
