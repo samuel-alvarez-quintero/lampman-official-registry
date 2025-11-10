@@ -40,11 +40,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          VERSION_TAG="daily-$(date +'%Y%m%d-%H%M%S')"
+          VERSION_TAG="auto-tag-$(date +'%Y%m%d-%H%M%S')"
           git tag "$VERSION_TAG"
           git push origin "$VERSION_TAG"
 
           gh release create "$VERSION_TAG" \
             --repo "$GITHUB_REPOSITORY" \
-            --title "Daily Lampman Release - $(date +'%Y-%m-%d')" \
+            --title "Automated Release - $(date +'%Y-%m-%d')" \
             --notes "Automated release containing commits since ${{ steps.check.outputs.latest_tag }}"
