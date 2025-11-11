@@ -9,16 +9,29 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REGISTRY_FILE="$ROOT_DIR/registry.json"
 TMP_JSON="$(mktemp)"
 BASE_URL="https://windows.php.net/downloads/releases"
+RELEASES_URL="$BASE_URL/releases.json"
 
-echo "Fetching PHP releases.json from $BASE_URL"
-curl -sSL "$BASE_URL/releases.json" -o "$TMP_JSON"
+echo "Fetching PHP releases.json from $RELEASES_URL"
+curl -sSL "$RELEASES_URL" -o "$TMP_JSON"
 
 # Initialize registry files if missing
 [[ -f "$REGISTRY_FILE" ]] || echo "{}" > "$REGISTRY_FILE"
 
 # --------------------------------------------
+# Function: HEAD request check
+# --------------------------------------------
+check_url() {
+  local url="$1"
+  local status
+  status=$(curl -s -o /dev/null -w "%{http_code}" -I "$url")
+  [[ "$status" == "200" ]]
+}
+
+# --------------------------------------------
 # Transform to Lampman registry format
 # --------------------------------------------
+echo "Transforming releases data to Lampman registry format..."
+FINAL_JSON="$(mktemp)"
 jq -n \
   --arg desc "Official PHP Lampman Registry for Windows" \
   --arg base "$BASE_URL" \
@@ -35,7 +48,7 @@ jq -n \
           .value
           | to_entries
           | map(
-              select(.key | test("^(ts|nts)-(vc15|vs16|vs17)-(x86|x64)$"; "i"))
+              select(.key | test("^(nts|ts)-(vc15|vs16|vs17)-(x86|x64)$"; "i"))
               | {
                   (.value.zip.path[:-4]): {
                     "Url": ($base + "/" + .value.zip.path),
@@ -65,11 +78,24 @@ jq -n \
       | add
     )
   }
-}' > "${TMP_JSON}.lampman"
+}' > "$FINAL_JSON"
 
-# Merge result into existing registry.json
-jq -s '.[0] * .[1]' "$REGISTRY_FILE" "${TMP_JSON}.lampman" > "${REGISTRY_FILE}.new"
-mv "${REGISTRY_FILE}.new" "$REGISTRY_FILE"
+# --------------------------------------------
+# Validate URLs before finalizing
+# --------------------------------------------
+echo "Validating download URLs..."
+jq -r '.Services.php[]?.Url' "${FINAL_JSON}" | while read -r url; do
+  if ! check_url "$url"; then
+    echo "Warning: $url not reachable, removing..."
+    jq "del(.Services.php[] | select(.Url==\"$url\"))" "${FINAL_JSON}" > "${FINAL_JSON}.tmp"
+    mv "${FINAL_JSON}.tmp" "${FINAL_JSON}"
+  fi
+done
 
-rm -f "$TMP_JSON" "${TMP_JSON}.lampman"
-echo "Updated Lampman PHP registry successfully."
+# --------------------------------------------
+# Write to registry.json
+# --------------------------------------------
+mv "$FINAL_JSON" "$REGISTRY_FILE"
+rm -f "$TMP_JSON"
+
+echo "Registry updated successfully."
