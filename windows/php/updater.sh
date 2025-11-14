@@ -10,6 +10,7 @@ REGISTRY_FILE="$ROOT_DIR/registry.json"
 TMP_JSON="$(mktemp)"
 BASE_URL="https://windows.php.net/downloads/releases"
 RELEASES_URL="$BASE_URL/releases.json"
+ARCHIVES_URL="$BASE_URL/archives/"
 
 echo "Fetching PHP releases.json from $RELEASES_URL"
 curl -sSL "$RELEASES_URL" -o "$TMP_JSON"
@@ -27,6 +28,77 @@ check_url() {
   [[ "$status" == "200" ]]
 }
 
+# Fetch and parse archive links
+echo "Fetching archive links..."
+ARCHIVE_LINKS="$(mktemp)"
+HTML_CONTENT=$(curl -sSL "$ARCHIVES_URL")
+echo "$HTML_CONTENT" | \
+  grep -Eo "downloads/releases/archives/[a-zA-Z0-9./?=_%:-]*\.zip" | \
+  jq -R . | jq -s . | jq 'map("https://windows.php.net/" + .)' > "$ARCHIVE_LINKS"
+
+
+# Convert archive URLs into objects categorized by filename patterns
+echo "Processing archive links..."
+jq -r '.[]' "$ARCHIVE_LINKS" | while read -r url; do
+  filename=$(basename "$url")
+
+  # Identify type by pattern
+  case "$filename" in
+    *debug-pack*.zip)  kind="debug_pack" ;;
+    *devel-pack*.zip)  kind="devel_pack" ;;
+    *test-pack*.zip)   kind="test_pack" ;;
+    *src*.zip)         kind="source" ;;
+    php-*.zip)         kind="zip" ;;
+    *) continue ;;
+  esac
+
+  version=$(echo "$filename" | grep -Eo '[0-9]+\.[0-9]+(\.[0-9]+)?' | head -1)
+
+  [[ -z "$version" ]] && continue
+
+  if [ "$kind" == "debug_pack" -o "$kind" == "devel_pack" -o "$kind" == "zip" ]; then
+  
+    arch=$(echo "$filename" | grep -Eo '(-nts)?-Win32(-([a-zA-Z0-9]+)-(x86|x64))?' | head -1)
+    arch=$(echo "${arch,,}" | sed 's/-win32//g')
+    arch=$(echo "${arch:1}")
+
+    [[ -z "$arch" ]] && continue
+
+    jq \
+      --arg version "$version" \
+      --arg build "$arch" \
+      --arg kind "$kind" \
+      --arg path "$filename" \
+      --arg url "$url" \
+      '
+      .[$version][$build][$kind] = {
+        path: $path,
+        url: $url,
+        sha256: null
+      }
+      ' "$TMP_JSON" > "${TMP_JSON}.new"
+  else
+
+    if [ "$kind" == "source" -o "$kind" == "test_pack" ]; then
+
+      jq \
+      --arg version "$version" \
+      --arg kind "$kind" \
+      --arg path "$filename" \
+      --arg url "$url" \
+      '
+      .[$version][$kind] = {
+        path: $path,
+        url: $url
+      }
+      ' "$TMP_JSON" > "${TMP_JSON}.new"
+
+    fi
+  fi
+
+  mv "${TMP_JSON}.new" "$TMP_JSON"
+done
+
 # --------------------------------------------
 # Transform to Lampman registry format
 # --------------------------------------------
@@ -35,23 +107,25 @@ FINAL_JSON="$(mktemp)"
 jq -n \
   --arg desc "Official PHP Lampman Registry for Windows" \
   --arg base "$BASE_URL" \
-  --argjson data "$(jq '.' "$TMP_JSON")" '
+  --slurpfile data "$TMP_JSON" '
 {
   "Version": "latest",
   "Description": $desc,
   "LastRequest": null,
   "Services": {
     "php": (
-      $data
+      $data[0]
       | to_entries
       | map(
           .value
           | to_entries
           | map(
-              select(.key | test("^(nts|ts)-(vc15|vs16|vs17)-(x86|x64)$"; "i"))
+              select(.key | test("^(nts-|ts-)?([a-zA-Z0-9]+)-(x86|x64)$"; "i"))
               | {
                   (.value.zip.path[:-4]): {
-                    "Url": ($base + "/" + .value.zip.path),
+                    "Url": (if .value.zip.url != null then .value.zip.url else $base + "/" + .value.zip.path end),
+                    "Verified": (.value.zip.url != null),
+                    "Tags": (if .value.zip.url == null then ["latest"] else [] end),
                     "ExtractTo": null,
                     "Checksum": { "SHA256": .value.zip.sha256 },
                     "Processes": [
@@ -67,8 +141,8 @@ jq -n \
                       }
                     ],
                     "Profiles": {
-                      "dev": {"Configuration": null,"Requirements": null},
-                      "prod": {"Configuration": null,"Requirements": null}
+                      "dev": { "Configuration": null, "Requirements": null },
+                      "prod": { "Configuration": null, "Requirements": null }
                     }
                   }
                 }
@@ -83,19 +157,50 @@ jq -n \
 # --------------------------------------------
 # Validate URLs before finalizing
 # --------------------------------------------
-echo "Validating download URLs..."
-jq -r '.Services.php[]?.Url' "${FINAL_JSON}" | while read -r url; do
-  if ! check_url "$url"; then
-    echo "Warning: $url not reachable, removing..."
-    jq "del(.Services.php[] | select(.Url==\"$url\"))" "${FINAL_JSON}" > "${FINAL_JSON}.tmp"
-    mv "${FINAL_JSON}.tmp" "${FINAL_JSON}"
+# Process ONLY entries where Verified == false
+
+jq -r '
+.Services.php
+| to_entries[]
+| select(.value.Verified == false)
+| .value.Url
+' "$FINAL_JSON" | while read -r url; do
+
+  echo "Checking: $url"
+
+  if check_url "$url"; then
+    echo "OK: $url"
+
+    # Mark as Verified = true
+    jq --arg url "$url" '
+      .Services.php |= with_entries(
+        if .value.Url == $url then
+          .value.Verified = true
+        else
+          .
+        end
+      )
+    ' "$FINAL_JSON" > "${FINAL_JSON}.tmp"
+
+    mv "${FINAL_JSON}.tmp" "$FINAL_JSON"
+
+  else
+    echo "FAILED: $url (removing entry)"
+
+    # Delete entry entirely
+    jq "del(.Services.php[] | select(.Url == \"$url\"))" "${FINAL_JSON}" > "${FINAL_JSON}.tmp"
+
+    mv "${FINAL_JSON}.tmp" "$FINAL_JSON"
   fi
+
 done
+
 
 # --------------------------------------------
 # Write to registry.json
 # --------------------------------------------
 mv "$FINAL_JSON" "$REGISTRY_FILE"
-rm -f "$TMP_JSON"
+rm -f $TMP_JSON
+rm -f $FINAL_JSON
 
 echo "Registry updated successfully."
