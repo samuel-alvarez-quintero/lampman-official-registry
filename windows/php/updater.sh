@@ -119,13 +119,12 @@ jq -n \
       | map(
           .value
           | to_entries
-          | map(
-              select(.key | test("^(nts-|ts-)?([a-zA-Z0-9]+)-(x86|x64)$"; "i"))
+          | map(select(.key | test("^(nts-|ts-)?([a-zA-Z0-9]+)-(x86|x64)$"; "i"))
               | {
                   (.value.zip.path[:-4]): {
-                    "Url": (if .value.zip.url != null then .value.zip.url else $base + "/" + .value.zip.path end),
+                    "Url": (.value.zip.url // ($base + "/" + .value.zip.path)),
                     "Verified": (.value.zip.url != null),
-                    "Tags": (if .value.zip.url == null then ["latest"] else [] end),
+                    "Tags": (if .value.zip.url? then ["archive", "prod"] else ["release", "prod"] end),
                     "ExtractTo": null,
                     "Checksum": { "SHA256": .value.zip.sha256 },
                     "Processes": [
@@ -145,8 +144,49 @@ jq -n \
                       "prod": { "Configuration": null, "Requirements": null }
                     }
                   }
-                }
+                } 
+
+                + (if .value.debug_pack? then                         # 2) DEBUG PACK
+                    {
+                      (.value.debug_pack.path[:-4]): {
+                        "Url": (.value.debug_pack.url // ($base + "/" + .value.debug_pack.path)),
+                        "Verified": (.value.debug_pack.url != null),
+                        "Tags": (if .value.debug_pack.url? then ["archive", "debug"] else ["release", "debug"] end),
+                        "ExtractTo": null,
+                        "Checksum": { "SHA256": .value.debug_pack.sha256 },
+                        "Processes": [],
+                        "Profiles": null
+                      }
+                    }
+                  else {} end)
+
+                + (if .value.devel_pack? then                         # 3) DEVEL PACK
+                    {
+                      (.value.devel_pack.path[:-4]): {
+                        "Url":      (.value.devel_pack.url // ($base + "/" + .value.devel_pack.path)),
+                        "Verified": (.value.devel_pack.url != null),
+                        "Tags": (if .value.devel_pack.url? then ["archive", "devel"] else ["release", "devel"] end),
+                        "ExtractTo": null,
+                        "Checksum": { "SHA256": .value.devel_pack.sha256 },
+                        "Processes": [],
+                        "Profiles": null
+                      }
+                    }
+                  else {} end)
             )
+            + map(select(.key | test("^(source|test_pack)$"; "i"))
+                | {
+                    (.value.path[:-4]): {
+                      "Url": (.value.url // ($base + "/" + .value.path)),
+                      "Verified": (.value.url != null),
+                      "Tags": (if .key == "source" then ["source"] else ["test"] end),
+                      "ExtractTo": null,
+                      "Checksum": { "SHA256": .value.sha256 },
+                      "Processes": [],
+                      "Profiles": null
+                    }
+                  }
+              )
           | add
         )
       | add
