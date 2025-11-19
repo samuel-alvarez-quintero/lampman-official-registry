@@ -1374,8 +1374,8 @@
         "Processes": [],
         "Profiles": null
       },
-      "php-8.4.14-Win32-vs17-x64": {
-        "Url": "https://windows.php.net/downloads/releases/php-8.4.14-Win32-vs17-x64.zip",
+      "php-8.4.15-Win32-vs17-x64": {
+        "Url": "https://windows.php.net/downloads/releases/php-8.4.15-Win32-vs17-x64.zip",
         "Verified": true,
         "Tags": [
           "release",
@@ -1383,7 +1383,7 @@
         ],
         "ExtractTo": null,
         "Checksum": {
-          "SHA256": "9a2b383e618770846686f74303eb4bcae25f399f0127fb53da820dc821623ee3"
+          "SHA256": "42957b27ebb1fb2d396a0e44a501a11ee6cd9d7ed4f9debfe7725712d17cffdd"
         },
         "Processes": [
           {
@@ -1408,8 +1408,8 @@
           }
         }
       },
-      "php-debug-pack-8.4.14-Win32-vs17-x64": {
-        "Url": "https://windows.php.net/downloads/releases/php-debug-pack-8.4.14-Win32-vs17-x64.zip",
+      "php-debug-pack-8.4.15-Win32-vs17-x64": {
+        "Url": "https://windows.php.net/downloads/releases/php-debug-pack-8.4.15-Win32-vs17-x64.zip",
         "Verified": true,
         "Tags": [
           "release",
@@ -1417,13 +1417,13 @@
         ],
         "ExtractTo": null,
         "Checksum": {
-          "SHA256": "96a972d208dfca22e8675cba49902ab7b4fb4cda27883a4c7b5e1ab5222be093"
+          "SHA256": "b58c96886eb7f2e4ebe1ee40587193a8a9f1ffcf77ef6e7a5bc02e2e9acd6d67"
         },
         "Processes": [],
         "Profiles": null
       },
-      "php-devel-pack-8.4.14-Win32-vs17-x64": {
-        "Url": "https://windows.php.net/downloads/releases/php-devel-pack-8.4.14-Win32-vs17-x64.zip",
+      "php-devel-pack-8.4.15-Win32-vs17-x64": {
+        "Url": "https://windows.php.net/downloads/releases/php-devel-pack-8.4.15-Win32-vs17-x64.zip",
         "Verified": true,
         "Tags": [
           "release",
@@ -1431,13 +1431,13 @@
         ],
         "ExtractTo": null,
         "Checksum": {
-          "SHA256": "eb9697d9849d4b28733c76ada0098907feb45d1a7847fbb4eb09e095f3f1da89"
+          "SHA256": "ecb1954edb6ffdc623f870b7d08460ee49b797b13ceef9c527cd48ed8f93872d"
         },
         "Processes": [],
         "Profiles": null
       },
-      "php-8.4.14-Win32-vs17-x86": {
-        "Url": "https://windows.php.net/downloads/releases/php-8.4.14-Win32-vs17-x86.zip",
+      "php-8.4.15-Win32-vs17-x86": {
+        "Url": "https://windows.php.net/downloads/releases/php-8.4.15-Win32-vs17-x86.zip",
         "Verified": true,
         "Tags": [
           "release",
@@ -1445,7 +1445,7 @@
         ],
         "ExtractTo": null,
         "Checksum": {
-          "SHA256": "5493862ca86fe69d7bfaa252eecf5c276ec4d0f21e65debc6c62d2fbee6384ca"
+          "SHA256": "0a3b2d3030d0ad9b4c27349088936fd7d5c961f94bba3951c1682b6175ed38dc"
         },
         "Processes": [
           {
@@ -1470,8 +1470,8 @@
           }
         }
       },
-      "php-debug-pack-8.4.14-Win32-vs17-x86": {
-        "Url": "https://windows.php.net/downloads/releases/php-debug-pack-8.4.14-Win32-vs17-x86.zip",
+      "php-debug-pack-8.4.15-Win32-vs17-x86": {
+        "Url": "https://windows.php.net/downloads/releases/php-debug-pack-8.4.15-Win32-vs17-x86.zip",
         "Verified": true,
         "Tags": [
           "release",
@@ -1479,13 +1479,13 @@
         ],
         "ExtractTo": null,
         "Checksum": {
-          "SHA256": "9e05f632308ca220bf1e52078f5a44233083eea0836ecb6e9c1c38ce4da8800e"
+          "SHA256": "2ee535c584a9937bf548e1caf634ffb81d93045de7569c289eb6f16cecf31018"
         },
         "Processes": [],
         "Profiles": null
       },
-      "php-devel-pack-8.4.14-Win32-vs17-x86": {
-        "Url": "https://windows.php.net/downloads/releases/php-devel-pack-8.4.14-Win32-vs17-x86.zip",
+      "php-devel-pack-8.4.15-Win32-vs17-x86": {
+        "Url": "https://windows.php.net/downloads/releases/php-devel-pack-8.4.15-Win32-vs17-x86.zip",
         "Verified": true,
         "Tags": [
           "release",
@@ -1493,13 +1493,13 @@
         ],
         "ExtractTo": null,
         "Checksum": {
-          "SHA256": "de9e12004b9305c7cd7eb0ca91615bb8391a6c2948cd3a69662813a61b11f111"
+          "SHA256": "0266d436c5c0a73c26bee8514d7428de32cecad16f2552e984a9ea1702ba8b15"
         },
         "Processes": [],
         "Profiles": null
       },
-      "php-8.4.14-nts-Win32-vs17-x64": {
-        "Url": "https://windows.php.net/downloads/releases/php-8.4.14-nts-Win32-vs17-x64.zip",
+      "php-8.4.15-nts-Win32-vs17-x64": {
+        "Url": "https://windows.php.net/downloads/releases/php-8.4.15-nts-Win32-vs17-x64.zip",
         "Verified": true,
         "Tags": [
           "release",
@@ -1507,7 +1507,7 @@
         ],
         "ExtractTo": null,
         "Checksum": {
-          "SHA256": "98d630843c1d9fbb01f601feafc295bae2fc83b8104b03b318d6129f52677435"
+          "SHA256": "73da73427bf6498d767788c8eb4411e2eb1b0fb2d93c4fa6399910f38f8263c0"
         },
         "Processes": [
           {
@@ -1532,8 +1532,8 @@
           }
         }
       },
-      "php-debug-pack-8.4.14-nts-Win32-vs17-x64": {
-        "Url": "https://windows.php.net/downloads/releases/php-debug-pack-8.4.14-nts-Win32-vs17-x64.zip",
+      "php-debug-pack-8.4.15-nts-Win32-vs17-x64": {
+        "Url": "https://windows.php.net/downloads/releases/php-debug-pack-8.4.15-nts-Win32-vs17-x64.zip",
         "Verified": true,
         "Tags": [
           "release",
@@ -1541,13 +1541,13 @@
         ],
         "ExtractTo": null,
         "Checksum": {
-          "SHA256": "7202334474822bbeb755461e884709e786983c955bd7c84c8b7df1629d762270"
+          "SHA256": "e432ba966fadd5ef1a69ff14286ac534f9f68dcaf8ba0704acb40af0cb7f9d50"
         },
         "Processes": [],
         "Profiles": null
       },
-      "php-devel-pack-8.4.14-nts-Win32-vs17-x64": {
-        "Url": "https://windows.php.net/downloads/releases/php-devel-pack-8.4.14-nts-Win32-vs17-x64.zip",
+      "php-devel-pack-8.4.15-nts-Win32-vs17-x64": {
+        "Url": "https://windows.php.net/downloads/releases/php-devel-pack-8.4.15-nts-Win32-vs17-x64.zip",
         "Verified": true,
         "Tags": [
           "release",
@@ -1555,13 +1555,13 @@
         ],
         "ExtractTo": null,
         "Checksum": {
-          "SHA256": "f3039008d9f8f9be9e6b9bfd460e39f7df6fa126f33c30d581e3adc9daffad44"
+          "SHA256": "f6c887cb86d187215fd28061d21705f013a399af39477354c8de8d9e65c6b061"
         },
         "Processes": [],
         "Profiles": null
       },
-      "php-8.4.14-nts-Win32-vs17-x86": {
-        "Url": "https://windows.php.net/downloads/releases/php-8.4.14-nts-Win32-vs17-x86.zip",
+      "php-8.4.15-nts-Win32-vs17-x86": {
+        "Url": "https://windows.php.net/downloads/releases/php-8.4.15-nts-Win32-vs17-x86.zip",
         "Verified": true,
         "Tags": [
           "release",
@@ -1569,7 +1569,7 @@
         ],
         "ExtractTo": null,
         "Checksum": {
-          "SHA256": "de0d8e0a396bbec998fdeeb03bb49f853ce91647257baaa6373c863bb1feeeb8"
+          "SHA256": "0f7e1a446119705e6ed8d2088734da1476193176c79fed3d0870655b451df562"
         },
         "Processes": [
           {
@@ -1594,8 +1594,8 @@
           }
         }
       },
-      "php-debug-pack-8.4.14-nts-Win32-vs17-x86": {
-        "Url": "https://windows.php.net/downloads/releases/php-debug-pack-8.4.14-nts-Win32-vs17-x86.zip",
+      "php-debug-pack-8.4.15-nts-Win32-vs17-x86": {
+        "Url": "https://windows.php.net/downloads/releases/php-debug-pack-8.4.15-nts-Win32-vs17-x86.zip",
         "Verified": true,
         "Tags": [
           "release",
@@ -1603,13 +1603,13 @@
         ],
         "ExtractTo": null,
         "Checksum": {
-          "SHA256": "c14b822ad9b9fecd70129b6e6d17ed43bce7d7df497eb94d77943dc34caea11c"
+          "SHA256": "33c013168e94424920a430a325ce14daa94d6ce13011fe5c8862b61eef61b49d"
         },
         "Processes": [],
         "Profiles": null
       },
-      "php-devel-pack-8.4.14-nts-Win32-vs17-x86": {
-        "Url": "https://windows.php.net/downloads/releases/php-devel-pack-8.4.14-nts-Win32-vs17-x86.zip",
+      "php-devel-pack-8.4.15-nts-Win32-vs17-x86": {
+        "Url": "https://windows.php.net/downloads/releases/php-devel-pack-8.4.15-nts-Win32-vs17-x86.zip",
         "Verified": true,
         "Tags": [
           "release",
@@ -1617,13 +1617,13 @@
         ],
         "ExtractTo": null,
         "Checksum": {
-          "SHA256": "c3cd768601990d0ec3af1a47ee31a09330cb09169d3545b98844b2c09655e01c"
+          "SHA256": "e5d1c94f60a7bf459ecd238ae04e2629805b5b41268a61127e1259ace3a1dbfe"
         },
         "Processes": [],
         "Profiles": null
       },
-      "php-8.4.14-src": {
-        "Url": "https://windows.php.net/downloads/releases/php-8.4.14-src.zip",
+      "php-8.4.15-src": {
+        "Url": "https://windows.php.net/downloads/releases/php-8.4.15-src.zip",
         "Verified": true,
         "Tags": [
           "source"
@@ -1635,15 +1635,15 @@
         "Processes": [],
         "Profiles": null
       },
-      "php-test-pack-8.4.14": {
-        "Url": "https://windows.php.net/downloads/releases/php-test-pack-8.4.14.zip",
+      "php-test-pack-8.4.15": {
+        "Url": "https://windows.php.net/downloads/releases/php-test-pack-8.4.15.zip",
         "Verified": true,
         "Tags": [
           "test"
         ],
         "ExtractTo": null,
         "Checksum": {
-          "SHA256": "8e84cd8b58c38e0b6ae88e297ac49fe573fcb489ee58d86ffbfff3039cd914ea"
+          "SHA256": "0d05fe62a07b369775f3e1b034b75c7154d2cf597a862beb4128ed5e20ee53a2"
         },
         "Processes": [],
         "Profiles": null
@@ -116272,6 +116272,280 @@
       },
       "php-test-pack-8.4.13": {
         "Url": "https://windows.php.net/downloads/releases/archives/php-test-pack-8.4.13.zip",
+        "Verified": true,
+        "Tags": [
+          "test"
+        ],
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": null
+        },
+        "Processes": [],
+        "Profiles": null
+      },
+      "php-8.4.14-nts-Win32-vs17-x64": {
+        "Url": "https://windows.php.net/downloads/releases/archives/php-8.4.14-nts-Win32-vs17-x64.zip",
+        "Verified": true,
+        "Tags": [
+          "archive",
+          "prod"
+        ],
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": null
+        },
+        "Processes": [
+          {
+            "Name": "php.exe",
+            "Version": null,
+            "ExePath": ".",
+            "Args": null,
+            "isExtention": false,
+            "ItDependsOn": null,
+            "MustBeDemonizing": false,
+            "AvailableToPathEnvVar": true
+          }
+        ],
+        "Profiles": {
+          "dev": {
+            "Configuration": null,
+            "Requirements": null
+          },
+          "prod": {
+            "Configuration": null,
+            "Requirements": null
+          }
+        }
+      },
+      "php-debug-pack-8.4.14-nts-Win32-vs17-x64": {
+        "Url": "https://windows.php.net/downloads/releases/archives/php-debug-pack-8.4.14-nts-Win32-vs17-x64.zip",
+        "Verified": true,
+        "Tags": [
+          "archive",
+          "debug"
+        ],
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": null
+        },
+        "Processes": [],
+        "Profiles": null
+      },
+      "php-devel-pack-8.4.14-nts-Win32-vs17-x64": {
+        "Url": "https://windows.php.net/downloads/releases/archives/php-devel-pack-8.4.14-nts-Win32-vs17-x64.zip",
+        "Verified": true,
+        "Tags": [
+          "archive",
+          "devel"
+        ],
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": null
+        },
+        "Processes": [],
+        "Profiles": null
+      },
+      "php-8.4.14-nts-Win32-vs17-x86": {
+        "Url": "https://windows.php.net/downloads/releases/archives/php-8.4.14-nts-Win32-vs17-x86.zip",
+        "Verified": true,
+        "Tags": [
+          "archive",
+          "prod"
+        ],
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": null
+        },
+        "Processes": [
+          {
+            "Name": "php.exe",
+            "Version": null,
+            "ExePath": ".",
+            "Args": null,
+            "isExtention": false,
+            "ItDependsOn": null,
+            "MustBeDemonizing": false,
+            "AvailableToPathEnvVar": true
+          }
+        ],
+        "Profiles": {
+          "dev": {
+            "Configuration": null,
+            "Requirements": null
+          },
+          "prod": {
+            "Configuration": null,
+            "Requirements": null
+          }
+        }
+      },
+      "php-debug-pack-8.4.14-nts-Win32-vs17-x86": {
+        "Url": "https://windows.php.net/downloads/releases/archives/php-debug-pack-8.4.14-nts-Win32-vs17-x86.zip",
+        "Verified": true,
+        "Tags": [
+          "archive",
+          "debug"
+        ],
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": null
+        },
+        "Processes": [],
+        "Profiles": null
+      },
+      "php-devel-pack-8.4.14-nts-Win32-vs17-x86": {
+        "Url": "https://windows.php.net/downloads/releases/archives/php-devel-pack-8.4.14-nts-Win32-vs17-x86.zip",
+        "Verified": true,
+        "Tags": [
+          "archive",
+          "devel"
+        ],
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": null
+        },
+        "Processes": [],
+        "Profiles": null
+      },
+      "php-8.4.14-Win32-vs17-x64": {
+        "Url": "https://windows.php.net/downloads/releases/archives/php-8.4.14-Win32-vs17-x64.zip",
+        "Verified": true,
+        "Tags": [
+          "archive",
+          "prod"
+        ],
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": null
+        },
+        "Processes": [
+          {
+            "Name": "php.exe",
+            "Version": null,
+            "ExePath": ".",
+            "Args": null,
+            "isExtention": false,
+            "ItDependsOn": null,
+            "MustBeDemonizing": false,
+            "AvailableToPathEnvVar": true
+          }
+        ],
+        "Profiles": {
+          "dev": {
+            "Configuration": null,
+            "Requirements": null
+          },
+          "prod": {
+            "Configuration": null,
+            "Requirements": null
+          }
+        }
+      },
+      "php-debug-pack-8.4.14-Win32-vs17-x64": {
+        "Url": "https://windows.php.net/downloads/releases/archives/php-debug-pack-8.4.14-Win32-vs17-x64.zip",
+        "Verified": true,
+        "Tags": [
+          "archive",
+          "debug"
+        ],
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": null
+        },
+        "Processes": [],
+        "Profiles": null
+      },
+      "php-devel-pack-8.4.14-Win32-vs17-x64": {
+        "Url": "https://windows.php.net/downloads/releases/archives/php-devel-pack-8.4.14-Win32-vs17-x64.zip",
+        "Verified": true,
+        "Tags": [
+          "archive",
+          "devel"
+        ],
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": null
+        },
+        "Processes": [],
+        "Profiles": null
+      },
+      "php-8.4.14-Win32-vs17-x86": {
+        "Url": "https://windows.php.net/downloads/releases/archives/php-8.4.14-Win32-vs17-x86.zip",
+        "Verified": true,
+        "Tags": [
+          "archive",
+          "prod"
+        ],
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": null
+        },
+        "Processes": [
+          {
+            "Name": "php.exe",
+            "Version": null,
+            "ExePath": ".",
+            "Args": null,
+            "isExtention": false,
+            "ItDependsOn": null,
+            "MustBeDemonizing": false,
+            "AvailableToPathEnvVar": true
+          }
+        ],
+        "Profiles": {
+          "dev": {
+            "Configuration": null,
+            "Requirements": null
+          },
+          "prod": {
+            "Configuration": null,
+            "Requirements": null
+          }
+        }
+      },
+      "php-debug-pack-8.4.14-Win32-vs17-x86": {
+        "Url": "https://windows.php.net/downloads/releases/archives/php-debug-pack-8.4.14-Win32-vs17-x86.zip",
+        "Verified": true,
+        "Tags": [
+          "archive",
+          "debug"
+        ],
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": null
+        },
+        "Processes": [],
+        "Profiles": null
+      },
+      "php-devel-pack-8.4.14-Win32-vs17-x86": {
+        "Url": "https://windows.php.net/downloads/releases/archives/php-devel-pack-8.4.14-Win32-vs17-x86.zip",
+        "Verified": true,
+        "Tags": [
+          "archive",
+          "devel"
+        ],
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": null
+        },
+        "Processes": [],
+        "Profiles": null
+      },
+      "php-8.4.14-src": {
+        "Url": "https://windows.php.net/downloads/releases/archives/php-8.4.14-src.zip",
+        "Verified": true,
+        "Tags": [
+          "source"
+        ],
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": null
+        },
+        "Processes": [],
+        "Profiles": null
+      },
+      "php-test-pack-8.4.14": {
+        "Url": "https://windows.php.net/downloads/releases/archives/php-test-pack-8.4.14.zip",
         "Verified": true,
         "Tags": [
           "test"
