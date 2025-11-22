@@ -3,7 +3,7 @@ name: Create new Release
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *" # every 24 hours (UTC)
+    - cron: "10 0 * * *" # every day at 00:10 (UTC)
 
 jobs:
   create-new-release:
