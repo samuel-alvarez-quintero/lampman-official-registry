@@ -1,0 +1,43 @@
+name: Update PHP Windows Registry
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 0 * * *" # every day at 00:15 (UTC)
+
+jobs:
+  update-httpd-registry:
+    runs-on: ubuntu-latest
+
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the changed files back to the repository.
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+
+      - name: Set up environment
+        run: sudo apt-get update && sudo apt-get install -y jq curl
+
+      - name: Run updater script
+        run: |
+          chmod +x windows/httpd/updater.sh
+          windows/httpd/updater.sh
+
+      - name: Commit registry if changed
+        id: commit
+        run: |
+          if git diff --quiet windows/httpd/registry.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add windows/httpd/registry.json
+            git commit -m "chore(httpd): update registry"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
