@@ -10,6 +10,7 @@ REGISTRY_FILE="$ROOT_DIR/registry.json"
 TMP_JSON="$(mktemp)"
 BASE_URL="https://www.apachelounge.com"
 DOWNLOAD_URL="$BASE_URL/download/"
+USER_AGENT="Lampman-RegistryBot/1.0 (+https://github.com/lampman-cli/Lampman)"
 
 # Initialize registry file if missing
 [[ -f "$REGISTRY_FILE" ]] || echo "{}" > "$REGISTRY_FILE"
@@ -23,14 +24,14 @@ echo "{}" > "$TMP_JSON"
 check_url() {
   local url="$1"
   local status
-  status=$(curl -s -o /dev/null -w "%{http_code}" -I "$url")
+  status=$(curl -A "$USER_AGENT" -s -o /dev/null -w "%{http_code}" -I "$url")
   [[ "$status" == "200" ]]
 }
 
 # Fetch and parse links
 echo "Fetching links..."
 DOWNLOAD_LINKS="$(mktemp)"
-HTML_CONTENT=$(curl -sSL "$DOWNLOAD_URL")
+HTML_CONTENT=$(curl -A "$USER_AGENT" -sSL "$DOWNLOAD_URL")
 echo "$HTML_CONTENT" | \
   grep -Eo "/download/([a-zA-Z0-9\-]+)/binaries/([a-zA-Z0-9.=_-]+)\.zip" | \
   jq -R . | jq -s . | jq --arg base "$BASE_URL" 'map($base + .)' | jq '. |= unique' > "$DOWNLOAD_LINKS"

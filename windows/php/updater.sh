@@ -11,9 +11,10 @@ TMP_JSON="$(mktemp)"
 BASE_URL="https://windows.php.net/downloads/releases"
 RELEASES_URL="$BASE_URL/releases.json"
 ARCHIVES_URL="$BASE_URL/archives/"
+USER_AGENT="Lampman-RegistryBot/1.0 (+https://github.com/lampman-cli/Lampman)"
 
 echo "Fetching PHP releases.json from $RELEASES_URL"
-curl -sSL "$RELEASES_URL" -o "$TMP_JSON"
+curl -A "$USER_AGENT" -sSL "$RELEASES_URL" -o "$TMP_JSON"
 
 # Initialize registry files if missing
 [[ -f "$REGISTRY_FILE" ]] || echo "{}" > "$REGISTRY_FILE"
@@ -24,14 +25,14 @@ curl -sSL "$RELEASES_URL" -o "$TMP_JSON"
 check_url() {
   local url="$1"
   local status
-  status=$(curl -s -o /dev/null -w "%{http_code}" -I "$url")
+  status=$(curl -A "$USER_AGENT" -s -o /dev/null -w "%{http_code}" -I "$url")
   [[ "$status" == "200" ]]
 }
 
 # Fetch and parse archive links
 echo "Fetching archive links..."
 ARCHIVE_LINKS="$(mktemp)"
-HTML_CONTENT=$(curl -sSL "$ARCHIVES_URL")
+HTML_CONTENT=$(curl -A "$USER_AGENT" -sSL "$ARCHIVES_URL")
 echo "$HTML_CONTENT" | \
   grep -Eo "downloads/releases/archives/[a-zA-Z0-9./?=_%:-]*\.zip" | \
   jq -R . | jq -s . | jq 'map("https://windows.php.net/" + .)' | jq '. |= unique' > "$ARCHIVE_LINKS"
