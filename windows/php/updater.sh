@@ -126,23 +126,7 @@ jq -n \
                     "Verified": (.value.zip.url != null),
                     "Tags": (if .value.zip.url? then ["archive", "prod"] else ["release", "prod"] end),
                     "ExtractTo": null,
-                    "Checksum": { "SHA256": .value.zip.sha256 },
-                    "Processes": [
-                      {
-                        "Name": "php.exe",
-                        "Version": .value.version,
-                        "ExePath": ".",
-                        "Args": null,
-                        "isExtention": false,
-                        "ItDependsOn": null,
-                        "MustBeDemonizing": false,
-                        "AvailableToPathEnvVar": true
-                      }
-                    ],
-                    "Profiles": {
-                      "dev": { "Configuration": null, "Requirements": null },
-                      "prod": { "Configuration": null, "Requirements": null }
-                    }
+                    "Checksum": { "SHA256": .value.zip.sha256 }
                   }
                 } 
 
@@ -153,9 +137,7 @@ jq -n \
                         "Verified": (.value.debug_pack.url != null),
                         "Tags": (if .value.debug_pack.url? then ["archive", "debug"] else ["release", "debug"] end),
                         "ExtractTo": null,
-                        "Checksum": { "SHA256": .value.debug_pack.sha256 },
-                        "Processes": [],
-                        "Profiles": null
+                        "Checksum": { "SHA256": .value.debug_pack.sha256 }
                       }
                     }
                   else {} end)
@@ -167,9 +149,7 @@ jq -n \
                         "Verified": (.value.devel_pack.url != null),
                         "Tags": (if .value.devel_pack.url? then ["archive", "devel"] else ["release", "devel"] end),
                         "ExtractTo": null,
-                        "Checksum": { "SHA256": .value.devel_pack.sha256 },
-                        "Processes": [],
-                        "Profiles": null
+                        "Checksum": { "SHA256": .value.devel_pack.sha256 }
                       }
                     }
                   else {} end)
@@ -181,9 +161,7 @@ jq -n \
                       "Verified": (.value.url != null),
                       "Tags": (if .key == "source" then ["source"] else ["test"] end),
                       "ExtractTo": null,
-                      "Checksum": { "SHA256": .value.sha256 },
-                      "Processes": [],
-                      "Profiles": null
+                      "Checksum": { "SHA256": .value.sha256 }
                     }
                   }
               )
