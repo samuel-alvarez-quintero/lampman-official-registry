@@ -1,4 +1,4 @@
-name: Update PHP Windows Registry
+name: Update Apache HTTP Server Windows Registry
 
 on:
   workflow_dispatch:
