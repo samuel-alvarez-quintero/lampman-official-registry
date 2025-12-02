@@ -34,7 +34,7 @@ ARCHIVE_LINKS="$(mktemp)"
 HTML_CONTENT=$(curl -sSL "$ARCHIVES_URL")
 echo "$HTML_CONTENT" | \
   grep -Eo "downloads/releases/archives/[a-zA-Z0-9./?=_%:-]*\.zip" | \
-  jq -R . | jq -s . | jq 'map("https://windows.php.net/" + .)' > "$ARCHIVE_LINKS"
+  jq -R . | jq -s . | jq 'map("https://windows.php.net/" + .)' | jq '. |= unique' > "$ARCHIVE_LINKS"
 
 
 # Convert archive URLs into objects categorized by filename patterns
