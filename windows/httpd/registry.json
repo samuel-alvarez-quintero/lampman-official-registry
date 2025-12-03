@@ -1,40 +1,31 @@
 {
-  "Version": "0.1.1",
-  "Description": "Official Httpd Lampman Registry",
+  "Version": "latest",
+  "Description": "Official Apache HTTP Server Lampman Registry for Windows",
   "LastRequest": null,
   "Services": {
     "httpd": {
-      "httpd-2.4.65-250724-Win64-VS17": {
+      "httpd-2.4.65-250724-win64-vs17": {
         "Url": "https://www.apachelounge.com/download/VS17/binaries/httpd-2.4.65-250724-Win64-VS17.zip",
+        "Verified": true,
+        "Tags": [
+          "release",
+          "prod"
+        ],
         "ExtractTo": null,
         "Checksum": {
-          "SHA256": "E324797985825424AF00CDB9D78B029723F18862DF6C02C2219B341E33E31F04"
-        },
-        "Processes": [
-          {
-            "Name": "httpd.exe",
-            "Version": "2.4.65",
-            "ExePath": ".",
-            "Args": null,
-            "isExtention": false,
-            "ItDependsOn": null,
-            "MustBeDemonizing": true,
-            "AvailableToPathEnvVar": true
-          }
+          "SHA256": null
+        }
+      },
+      "httpd-2.4.65-250724-win32-vs17": {
+        "Url": "https://www.apachelounge.com/download/vs17/binaries/httpd-2.4.65-250724-win32-vs17.zip",
+        "Verified": true,
+        "Tags": [
+          "release",
+          "prod"
         ],
-        "Profiles": {
-          "default": {
-            "Configuration": null,
-            "Requirements": null
-          },
-          "dev": {
-            "Configuration": null,
-            "Requirements": null
-          },
-          "prod": {
-            "Configuration": null,
-            "Requirements": null
-          }
+        "ExtractTo": null,
+        "Checksum": {
+          "SHA256": null
         }
       }
     }
