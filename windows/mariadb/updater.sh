@@ -34,7 +34,7 @@ VERSION_LINKS="$(mktemp)"
 HTML_CONTENT=$(curl -A "$USER_AGENT" -sSL "$DOWNLOAD_URL")
 echo "$HTML_CONTENT" | \
   grep -Eo "mariadb-[0-9]+\.[0-9]+(\.[0-9]+)?" | \
-  # jq -R . | jq -s . | jq --arg base "$DOWNLOAD_URL" 'map($base + .)' | jq '. |= unique' | jq '.[:(length/30)]' > "$VERSION_LINKS"
+  # jq -R . | jq -s . | jq --arg base "$DOWNLOAD_URL" 'map($base + .)' | jq '. |= unique' | jq '.[(length/4):]' > "$VERSION_LINKS"
   jq -R . | jq -s . | jq --arg base "$DOWNLOAD_URL" 'map($base + .)' | jq '. |= unique' > "$VERSION_LINKS"
 
 # Fetching full links
@@ -43,18 +43,21 @@ WIN_LINKS="$(mktemp)"
 echo "[]" > "$WIN_LINKS"
 jq -r '.[]' "$VERSION_LINKS" | while read -r base_url; do
 
-  for subdir in winx64-packages/ win32-packages/ windows/; do
+  for subdir in winx64-packages/ win32-packages/ windows/ win2008r2-vs2010-amd64-packages/ win2008r2-vs2010-i386-packages/; do
     candidate="$base_url/$subdir"
     if check_url "$candidate"; then
       win_dir="$candidate"
 
       HTML_CONTENT=$(curl -A "$USER_AGENT" -sSL "$win_dir")
       echo "$HTML_CONTENT" | \
-      grep -Eo "mariadb-[0-9]+\.[0-9]+(\.[0-9]+)?(-(win64|winx64|win32|winx32))?\.zip" | \
+      grep -Eo "mariadb-[0-9]+\.[0-9]+(\.[0-9]+)?(-((w|W)inx?(32|64)))?\.zip" | \
       jq -R . | jq -s . | jq --arg base "$win_dir" 'map($base + .)' > "${WIN_LINKS}.new"
 
-      jq -s 'add' "$WIN_LINKS" "${WIN_LINKS}.new" > "${WIN_LINKS}.tmp"
-      mv "${WIN_LINKS}.tmp" "$WIN_LINKS"
+      # Check if an array is not empty
+      if [[ $(jq 'length' "${WIN_LINKS}.new") -gt 0 ]]; then
+        jq -s 'add' "$WIN_LINKS" "${WIN_LINKS}.new" > "${WIN_LINKS}.tmp"
+        mv "${WIN_LINKS}.tmp" "$WIN_LINKS"
+      fi
     fi
   done
 
@@ -69,7 +72,7 @@ jq -r '.[]' "$WIN_LINKS" | while read -r url; do
 
   [[ -z "$version" ]] && continue
   
-  arch=$(echo "$filename" | grep -Eo '(win64|winx64|win32|winx32)' | head -1)
+  arch=$(echo "$filename" | grep -Eo '((w|W)inx?(32|64))' | head -1)
   arch=$(echo "${arch,,}")
   filename=$(echo "${filename,,}")
 
@@ -111,7 +114,7 @@ jq -n \
       | map(
           .value
           | to_entries
-          | map(select(.key | test("^(win64|winx64|win32|winx32)$"; "i"))
+          | map(select(.key | test("^((w|W)inx?(32|64))$"; "i"))
               | {
                   (.value.path[:-4]): {
                     "Url": .value.url,
