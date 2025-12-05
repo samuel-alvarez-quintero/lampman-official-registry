@@ -34,7 +34,6 @@ VERSION_LINKS="$(mktemp)"
 HTML_CONTENT=$(curl -A "$USER_AGENT" -sSL "$DOWNLOAD_URL")
 echo "$HTML_CONTENT" | \
   grep -Eo "mariadb-[0-9]+\.[0-9]+(\.[0-9]+)?" | \
-  # jq -R . | jq -s . | jq --arg base "$DOWNLOAD_URL" 'map($base + .)' | jq '. |= unique' | jq '.[(length/4):]' > "$VERSION_LINKS"
   jq -R . | jq -s . | jq --arg base "$DOWNLOAD_URL" 'map($base + .)' | jq '. |= unique' > "$VERSION_LINKS"
 
 # Fetching full links
@@ -43,21 +42,35 @@ WIN_LINKS="$(mktemp)"
 echo "[]" > "$WIN_LINKS"
 jq -r '.[]' "$VERSION_LINKS" | while read -r base_url; do
 
-  for subdir in winx64-packages/ win32-packages/ windows/ win2008r2-vs2010-amd64-packages/ win2008r2-vs2010-i386-packages/; do
+  for subdir in \
+    winx64-packages/ \
+    win32-packages/ \
+    windows/ \
+    win2008r2-vs2010-amd64-packages/ \
+    win2008r2-vs2010-i386-packages/
+  do
     candidate="$base_url/$subdir"
-    if check_url "$candidate"; then
-      win_dir="$candidate"
+    if ! check_url "$candidate"; then
+      continue
+    fi
 
-      HTML_CONTENT=$(curl -A "$USER_AGENT" -sSL "$win_dir")
-      echo "$HTML_CONTENT" | \
-      grep -Eo "mariadb-[0-9]+\.[0-9]+(\.[0-9]+)?(-((w|W)inx?(32|64)))?\.zip" | \
+    win_dir="$candidate"
+    HTML_CONTENT=$(curl -A "$USER_AGENT" -sSL "$win_dir")
+
+    ZIP_LIST=$(echo "$HTML_CONTENT" | grep -Eo \
+      "mariadb-[0-9]+\.[0-9]+(\.[0-9]+)?(-((w|W)inx?(32|64)))?\.zip" || true)
+
+    if [[ -z "$ZIP_LIST" ]]; then
+      echo "No zip files in $win_dir"
+      continue
+    fi
+
+    echo "$ZIP_LIST" | \
       jq -R . | jq -s . | jq --arg base "$win_dir" 'map($base + .)' > "${WIN_LINKS}.new"
 
-      # Check if an array is not empty
-      if [[ $(jq 'length' "${WIN_LINKS}.new") -gt 0 ]]; then
-        jq -s 'add' "$WIN_LINKS" "${WIN_LINKS}.new" > "${WIN_LINKS}.tmp"
-        mv "${WIN_LINKS}.tmp" "$WIN_LINKS"
-      fi
+    if [[ $(jq 'length' "${WIN_LINKS}.new") -gt 0 ]]; then
+      jq -s 'add | unique' "$WIN_LINKS" "${WIN_LINKS}.new" > "${WIN_LINKS}.tmp"
+      mv "${WIN_LINKS}.tmp" "$WIN_LINKS"
     fi
   done
 
@@ -178,7 +191,7 @@ done
 # Write to registry.json
 # --------------------------------------------
 mv "$FINAL_JSON" "$REGISTRY_FILE"
-rm -f $TMP_JSON
-rm -f $FINAL_JSON
+rm -f "$TMP_JSON"
+rm -f "$FINAL_JSON"
 
 echo "Registry updated successfully."
